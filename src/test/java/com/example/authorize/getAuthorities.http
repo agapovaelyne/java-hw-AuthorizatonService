@@ -1,0 +1,10 @@
+#valid request - no exceptions
+#GET http://localhost:8080/authorize?user=Elyne&password=qwerty
+
+#unauthorized 401 - UnauthorizedUser + console message
+GET http://localhost:8080/authorize?user=Elyne&password=qwerty123
+
+#bad request 400 - InvalidCredentials
+#GET http://localhost:8080/authorize?user=&password=qwerty123
+#GET http://localhost:8080/authorize?user=Elyne&password=
+###
