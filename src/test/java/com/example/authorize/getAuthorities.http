@@ -1,10 +1,9 @@
 #valid request - no exceptions
-#GET http://localhost:8080/authorize?user=Elyne&password=qwerty
+POST http://localhost:8080/authorize?name=Elyne&password=qwerty1A@qwerty
 
-#unauthorized 401 - UnauthorizedUser + console message
-GET http://localhost:8080/authorize?user=Elyne&password=qwerty123
+#invalid request - username not validated
+#POST http://localhost:8080/authorize?name=E&password=qwerty1A@qwerty
 
-#bad request 400 - InvalidCredentials
-#GET http://localhost:8080/authorize?user=&password=qwerty123
-#GET http://localhost:8080/authorize?user=Elyne&password=
-###
+#invalid request - password no exceptions
+#POST http://localhost:8080/authorize?name=Helena&password=qwerty
+

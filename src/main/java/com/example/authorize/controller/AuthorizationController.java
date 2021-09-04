@@ -3,17 +3,19 @@ package com.example.authorize.controller;
 import com.example.authorize.exception.InvalidCredentials;
 import com.example.authorize.exception.UnauthorizedUser;
 import com.example.authorize.model.Authorities;
+import com.example.authorize.model.User;
+import com.example.authorize.model.UserResolver;
 import com.example.authorize.service.AuthorizationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@Validated
 public class AuthorizationController {
     AuthorizationService service;
 
@@ -21,9 +23,9 @@ public class AuthorizationController {
         this.service = service;
     }
 
-    @GetMapping("/authorize")
-    public List<Authorities> getAuthorities(@RequestParam("user") String user, @RequestParam("password") String password) {
-        return service.getAuthorities(user, password);
+    @PostMapping("/authorize")
+    public List<Authorities> getAuthorities(@Valid @UserResolver User user) {
+        return service.getAuthorities(user);
     }
 
     @ExceptionHandler(InvalidCredentials.class)
@@ -35,4 +37,5 @@ public class AuthorizationController {
     ResponseEntity<String> handleRunTimeExc(UnauthorizedUser exc) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Error occurred: " + exc.getLocalizedMessage());
     }
+
 }

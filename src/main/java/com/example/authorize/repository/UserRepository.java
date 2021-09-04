@@ -13,7 +13,8 @@ public class UserRepository {
     private Map fullPermUsers = new HashMap();
 
     public UserRepository() {
-        fullPermUsers.put("Elyne", "qwerty");
+        fullPermUsers.put("Elyne", "qwerty1A@qwerty");
+        fullPermUsers.put("Helena", "qwerty");
     }
 
     public List<Authorities> getUserAuthorities(String user, String password) {
