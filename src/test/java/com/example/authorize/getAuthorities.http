@@ -1,9 +1,9 @@
 #valid request - no exceptions
-POST http://localhost:8080/authorize?name=Elyne&password=qwerty1A@qwerty
+GET http://localhost:8080/authorize?name=Elyne&password=qwerty1A@qwerty
 
 #invalid request - username not validated
-#POST http://localhost:8080/authorize?name=E&password=qwerty1A@qwerty
+#GET http://localhost:8080/authorize?name=E&password=qwerty1A@qwerty
 
 #invalid request - password no exceptions
-#POST http://localhost:8080/authorize?name=Helena&password=qwerty
+#GET http://localhost:8080/authorize?name=Helena&password=qwerty
 

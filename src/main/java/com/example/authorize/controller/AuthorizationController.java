@@ -23,7 +23,12 @@ public class AuthorizationController {
         this.service = service;
     }
 
-    @PostMapping("/authorize")
+    @GetMapping()
+    public String getAuthorities() {
+        return "Application starter page! \nHello!";
+    }
+
+    @GetMapping("/authorize")
     public List<Authorities> getAuthorities(@Valid @UserResolver User user) {
         return service.getAuthorities(user);
     }
